@@ -72,8 +72,13 @@ How do you do this for every column?
 `@sample_code`
 ```{r}
 library(dplyr)
+
+# over one column
 mtcars %>%
   summarize(number_nas = sum(is.na(mpg)))
+
+mtcars %>%
+  purrr::map_df(~sum(is.na(.)))
 ```
 
 `@solution`
