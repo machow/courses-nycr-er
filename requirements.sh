@@ -12,3 +12,5 @@ curl https://assets.datacamp.com/production/repositories/2799/datasets/30e11661e
        -O
 
 unzip kaggle-survey-2017.zip
+mv kaggle-survey-2017 /usr/local/share/datasets
+chmod a+r /usr/local/share/datasets/*
