@@ -1,9 +1,9 @@
 ---
-title: Template Chapter 1
-description: This is a template chapter.
+title: Lesser Known Stars of the Tidyverse
+description: lesser known stars
 ---
 
-## Ex 1.1
+## Step 1: printing your data
 
 ```yaml
 type: NormalExercise
@@ -13,7 +13,7 @@ skills: 1
 key: 99f5ab484c
 ```
 
-Do some data science.
+Problem #1, printing displays too much information.
 
 `@instructions`
 
@@ -30,7 +30,9 @@ Do some data science.
 `@sample_code`
 
 ```{r}
+library(tibble)
 
+as_tibble(mtcars)
 ```
 
 `@solution`
@@ -41,6 +43,45 @@ Do some data science.
 
 `@sct`
 
+```{r}
+
+```
+
+---
+## Step 2: examine your NAs
+
+```yaml
+type: NormalExercise
+key: 944f71ae22
+lang: r
+xp: 100
+skills: 1
+```
+
+How do you do this for every column?
+
+`@instructions`
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+library(dplyr)
+mtcars %>%
+  summarize(number_nas = sum(is.na(mpg)))
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
 ```{r}
 
 ```
