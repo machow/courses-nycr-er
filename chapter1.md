@@ -181,7 +181,8 @@ nested_workmethods <- multiple_choice_responses_base %>%
   # str_split to split answers
   mutate(work_method = stringr::str_split(WorkMethodsSelect, ",")) %>%
   # unnest
-  tidyr::unnest()
+  tidyr::unnest() %>%
+  as_tibble()
 
 ```
 
