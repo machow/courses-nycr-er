@@ -7,3 +7,8 @@
 
 # e.g., XML and Cairo graphics
 apt-get update && apt-get --yes install libxml2-dev libcairo2-dev
+
+curl https://assets.datacamp.com/production/repositories/2799/datasets/30e11661e2452c14f473ecf84fcf03a8eaa77006/kaggle-survey-2017.zip \
+       -O
+
+unzip kaggle-survey-2017.zip
