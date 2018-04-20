@@ -58,7 +58,6 @@ xp: 100
 skills: 1
 ```
 
-How do you do this for every column?
 
 `@instructions`
 
@@ -77,8 +76,50 @@ library(dplyr)
 mtcars %>%
   summarize(number_nas = sum(is.na(mpg)))
 
+# How do you do this for every column?
 mtcars %>%
   purrr::map_df(~sum(is.na(.)))
+
+# Missing values aren't NA
+mtcars %>%
+  na_if("") %>%
+  count(mpg)
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
+
+---
+## <<<New Exercise>>>
+
+```yaml
+type: NormalExercise
+key: 06d22dda5a
+lang: r
+xp: 100
+skills: 1
+```
+
+
+`@instructions`
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+
 ```
 
 `@solution`
