@@ -6,4 +6,4 @@
 # --assume-yes --assume-no --trivial-only --allow-downgrades --allow-remove-essential --allow-change-held-packages
 
 # e.g., XML and Cairo graphics
-# apt-get update && apt-get --yes install libxml2-dev libcairo2-dev
+apt-get update && apt-get --yes install libxml2-dev libcairo2-dev
