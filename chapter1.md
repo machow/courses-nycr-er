@@ -24,7 +24,8 @@ Problem #1, printing displays too much information.
 `@pre_exercise_code`
 
 ```{r}
-
+multiple_choice_responses_base <- 
+  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
 ```
 
 `@sample_code`
@@ -32,7 +33,7 @@ Problem #1, printing displays too much information.
 ```{r}
 library(tibble)
 
-as_tibble(mtcars)
+as_tibble(multiple_choice_responses_base)
 ```
 
 `@solution`
@@ -65,7 +66,8 @@ skills: 1
 
 `@pre_exercise_code`
 ```{r}
-
+multiple_choice_responses_base <- 
+  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
 ```
 
 `@sample_code`
@@ -73,15 +75,19 @@ skills: 1
 library(dplyr)
 
 # over one column
-mtcars %>%
-  summarize(number_nas = sum(is.na(mpg)))
+multiple_choice_responses_base %>%
+  summarize(number_nas = sum(is.na(Country)))
 
 # How do you do this for every column?
-mtcars %>%
+multiple_choice_responses_base %>%
   purrr::map_df(~sum(is.na(.)))
 
-# Missing values aren't NA
-mtcars %>%
+# No NAs - too good to be true?
+multiple_choice_responses_base %>%
+  dplyr::count(StudentStatus)
+
+# Use na_if to change "" to NA
+fixed <- multiple_choice_responses_base %>%
   na_if("") %>%
   count(mpg)
 ```
@@ -114,7 +120,8 @@ skills: 1
 
 `@pre_exercise_code`
 ```{r}
-
+multiple_choice_responses_base <- 
+  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
 ```
 
 `@sample_code`
@@ -122,7 +129,7 @@ skills: 1
 library(dplyr)
 
 # how can I get numeric columns quickly?
-mtcars %>%
+multiple_choice_responses_base %>%
   select_if(is.numeric) %>%
   skimr::skim()
 ```
@@ -156,14 +163,26 @@ Problem: it has multiple answers in the each row
 
 `@pre_exercise_code`
 ```{r}
-
+multiple_choice_responses_base <- 
+  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
 ```
 
 `@sample_code`
 ```{r}
+library(dplyr)
+
 # TODO: split multiple answers from each row
-mtcars %>%
-  count(mpg, sort = TRUE)
+multiple_choice_responses_base %>%
+  count(WorkMethodsSelect, sort = TRUE)
+  
+nested_workmethods <- multiple_choice_responses_base %>%
+  select(WorkMethodsSelect) %>%
+  filter(!is.na(WorkMethodsSelect)) %>%
+  # str_split to split answers
+  mutate(work_method = stringr::str_split(WorkMethodsSelect, ",")) %>%
+  # unnest
+  tidyr::unnest()
+
 ```
 
 `@solution`
