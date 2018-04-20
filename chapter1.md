@@ -97,7 +97,7 @@ mtcars %>%
 ```
 
 ---
-## <<<New Exercise>>>
+## Step 3, examine numeric columns
 
 ```yaml
 type: NormalExercise
@@ -119,7 +119,12 @@ skills: 1
 
 `@sample_code`
 ```{r}
+library(dplyr)
 
+# how can I get numeric columns quickly?
+mtcars %>%
+  select_if(is.numeric) %>%
+  skimr::skim()
 ```
 
 `@solution`
