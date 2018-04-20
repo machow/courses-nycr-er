@@ -24,8 +24,6 @@ Problem #1, printing displays too much information.
 `@pre_exercise_code`
 
 ```{r}
-multiple_choice_responses_base <- 
-  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
 ```
 
 `@sample_code`
@@ -33,6 +31,13 @@ multiple_choice_responses_base <-
 ```{r}
 library(tibble)
 
+multiple_choice_responses_base <- 
+  read.csv("/usr/local/share/datasets/multipleChoiceResponses.csv", stringsAsFactors = FALSE)
+
+# note, trying to print the data will crash DataCamp, since it's too big :/
+nrow(multiple_choice_responses_base)
+
+# but not as a tibble
 as_tibble(multiple_choice_responses_base)
 ```
 
