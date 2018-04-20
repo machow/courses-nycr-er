@@ -136,3 +136,42 @@ mtcars %>%
 ```{r}
 
 ```
+
+---
+## Step 4, examine a single column
+
+```yaml
+type: NormalExercise
+key: 05bed41249
+lang: r
+xp: 100
+skills: 1
+```
+
+Problem: it has multiple answers in the each row
+
+`@instructions`
+
+`@hint`
+
+`@pre_exercise_code`
+```{r}
+
+```
+
+`@sample_code`
+```{r}
+# TODO: split multiple answers from each row
+mtcars %>%
+  count(mpg, sort = TRUE)
+```
+
+`@solution`
+```{r}
+
+```
+
+`@sct`
+```{r}
+
+```
