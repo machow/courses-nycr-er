@@ -93,8 +93,8 @@ multiple_choice_responses_base %>%
 
 # Use na_if to change "" to NA
 fixed <- multiple_choice_responses_base %>%
-  na_if("") %>%
-  count(mpg)
+  dplyr::na_if("") %>%
+  count(StudentStatus)
 ```
 
 `@solution`
